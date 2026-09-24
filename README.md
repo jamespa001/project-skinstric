@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Skinstric Frontend Clone
 
-## Getting Started
+A high-fidelity frontend clone of the Skinstric AI-powered skin analysis and diagnostics platform, built with modern web technologies.
 
-First, run the development server:
+## 🚀 Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Framework:** [Next.js](https://nextjs.org/) (App Router)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Language:** TypeScript
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Styling:** Tailwind CSS
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Icons & Assets:** Custom image assets & SVG visualizations
 
-## Learn More
+- **State Management:** React Hooks & LocalStorage persistence
 
-To learn more about Next.js, take a look at the following resources:
+## ✨ Key Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **A.I. Demographics Analysis:** Interactive breakdown and visualization of predicted race, age, and gender metrics.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Dynamic Circular Progress:** Custom SVG-based progress bars reflecting confidence scores.
 
-## Deploy on Vercel
+- **Fully Responsive Design:** Seamless layout transitions across mobile, tablet, and desktop viewports.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Accessibility (A11y):** Full keyboard navigation support (`Enter`/`Space` handlers) and ARIA attributes for
+  custom tab and radio components.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🗺️ Development Roadmap & Commit Strategy
+
+This project is built and committed incrementally following a structured multi-phase strategy:
+
+1. **Initial Setup & Documentation**
+   - Project scaffolding, Next.js configuration, Tailwind setup, and initial `README.md`.
+
+2. **Core Layouts & Navigation**
+   - Global header, footer navigation components, and base page skeletons.
+
+3. **A.I. Analysis & Data Visualization**
+   - Integration of API services, demographic selection, and dynamic SVG circular progress bars.
+
+4. **State Persistence, Error Handling & Polish**
+   - LocalStorage synchronization, `try...catch` data parsing guards, keyboard accessibility (ARIA), and final responsiveness tweaks.
