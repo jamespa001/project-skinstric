@@ -23,12 +23,17 @@ export default function CaptureMethodStep({
       {/* Two Options Container */}
       <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-40 items-center justify-center w-full max-w-6xl mx-auto">
         {/* Left Option: Camera Scan */}
-        <div
+        <button
+          type="button"
           onClick={onSelectCamera}
-          className="group relative aspect-square w-full max-w-[280px] md:max-w-[482px] mx-auto flex flex-col items-center justify-center cursor-pointer transition-transform duration-300 hover:scale-105"
+          aria-label="Allow A.I. to scan your face using camera"
+          className="group relative aspect-square w-full max-w-[280px] md:max-w-[482px] mx-auto flex flex-col items-center justify-center cursor-pointer transition-transform duration-300 hover:scale-105 bg-transparent border-none p-0 text-left"
         >
           {/* Background Dashed Boxes Frame */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div
+            className="absolute inset-0 flex items-center justify-center pointer-events-none"
+            aria-hidden="true"
+          >
             <RotatingRectangles variant="small" sizeTier="compact" />
           </div>
 
@@ -37,7 +42,7 @@ export default function CaptureMethodStep({
             <div className="w-[90px] h-[90px] md:w-[136px] md:h-[136px] relative flex items-center justify-center pointer-events-auto">
               <Image
                 src="/assets/camera-icon.png"
-                alt="Allow A.I. to scan your face"
+                alt=""
                 width={136}
                 height={136}
                 priority
@@ -46,7 +51,10 @@ export default function CaptureMethodStep({
             </div>
 
             {/* Single Straight Diagonal Line SVG: Hidden on mobile (< 768px) */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible hidden md:block">
+            <svg
+              className="absolute inset-0 w-full h-full pointer-events-none overflow-visible hidden md:block"
+              aria-hidden="true"
+            >
               <line
                 x1="270"
                 y1="190"
@@ -74,19 +82,26 @@ export default function CaptureMethodStep({
               </p>
             </div>
           </div>
-        </div>
+        </button>
 
         {/* Right Option: Gallery Upload */}
-        <div
+        <button
+          type="button"
           onClick={!isPermissionOpen ? onSelectUpload : undefined}
-          className={`group relative aspect-square w-full max-w-[280px] md:max-w-[482px] mx-auto flex flex-col items-center justify-center transition-all duration-300 ${
+          disabled={isPermissionOpen}
+          aria-disabled={isPermissionOpen}
+          aria-label="Allow A.I. access gallery to upload photo"
+          className={`group relative aspect-square w-full max-w-[280px] md:max-w-[482px] mx-auto flex flex-col items-center justify-center transition-all duration-300 bg-transparent border-none p-0 text-left ${
             isPermissionOpen
-              ? 'opacity-40 pointer-events-none'
+              ? 'opacity-40 pointer-events-none cursor-not-allowed'
               : 'cursor-pointer hover:scale-105'
           } -mt-6 md:mt-0`}
         >
           {/* Background Dashed Boxes Frame */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div
+            className="absolute inset-0 flex items-center justify-center pointer-events-none"
+            aria-hidden="true"
+          >
             <RotatingRectangles variant="small" sizeTier="compact" />
           </div>
 
@@ -95,7 +110,7 @@ export default function CaptureMethodStep({
             <div className="w-[90px] h-[90px] md:w-[136px] md:h-[136px] relative flex items-center justify-center pointer-events-auto">
               <Image
                 src="/assets/gallery-icon.png"
-                alt="Allow A.I. access gallery"
+                alt=""
                 width={136}
                 height={136}
                 className="object-contain"
@@ -103,7 +118,10 @@ export default function CaptureMethodStep({
             </div>
 
             {/* Single Straight Diagonal Line SVG: Hidden on mobile (< 768px) */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible hidden md:block">
+            <svg
+              className="absolute inset-0 w-full h-full pointer-events-none overflow-visible hidden md:block"
+              aria-hidden="true"
+            >
               <line
                 x1="179"
                 y1="260"
@@ -131,7 +149,7 @@ export default function CaptureMethodStep({
               </p>
             </div>
           </div>
-        </div>
+        </button>
       </div>
     </div>
   );

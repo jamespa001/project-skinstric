@@ -47,7 +47,9 @@ export default function FooterNavigation({
       <div>
         {showBack && onBack ? (
           <button
+            type="button"
             onClick={onBack}
+            aria-label={backLabel}
             className={`flex items-center group focus:outline-none cursor-pointer ${
               useAbsoluteBackOnMobile
                 ? `max-[767px]:absolute ${mobileTopOffsetClass} max-[767px]:left-[15px] max-[767px]:z-50 md:static md:top-auto md:left-auto`
@@ -61,6 +63,7 @@ export default function FooterNavigation({
                   ? 'border-white bg-gray-400/10 text-white'
                   : 'border-black bg-white text-black'
               }`}
+              aria-hidden="true"
             >
               <span
                 className={`${textSizeClass} ${fontWeightClass} text-[12px] font-semibold tracking-tighter -rotate-45 select-none whitespace-nowrap`}
@@ -74,10 +77,11 @@ export default function FooterNavigation({
               className={`hidden sm:flex w-10 h-10 border rotate-45 items-center justify-center transition-transform duration-300 sm:group-hover:scale-110 ${
                 inverted ? 'border-white bg-gray-400/10' : 'border-black'
               }`}
+              aria-hidden="true"
             >
               <Image
                 src="/assets/arrow-left.png"
-                alt="Back"
+                alt=""
                 width={12}
                 height={12}
                 style={{ width: 'auto', height: 'auto' }}
@@ -97,7 +101,7 @@ export default function FooterNavigation({
             </span>
           </button>
         ) : (
-          <div className="w-12 sm:w-24" />
+          <div className="w-12 sm:w-24" aria-hidden="true" />
         )}
       </div>
 
@@ -105,7 +109,9 @@ export default function FooterNavigation({
       <div>
         {showNext && onNext ? (
           <button
+            type="button"
             onClick={onNext}
+            aria-label={nextLabel}
             className={`flex items-center group focus:outline-none cursor-pointer ${
               useAbsoluteNextOnMobile
                 ? `max-[767px]:absolute ${mobileTopOffsetClass} max-[767px]:right-12 max-[767px]:z-50 md:static md:top-auto md:right-auto`
@@ -127,10 +133,11 @@ export default function FooterNavigation({
               className={`hidden sm:flex w-10 h-10 border rotate-45 items-center justify-center transition-transform duration-300 sm:group-hover:scale-110 ${
                 inverted ? 'border-white bg-black/30' : 'border-black'
               }`}
+              aria-hidden="true"
             >
               <Image
                 src="/assets/arrow-right.png"
-                alt="Proceed"
+                alt=""
                 width={12}
                 height={12}
                 style={{ width: 'auto', height: 'auto' }}
@@ -147,6 +154,7 @@ export default function FooterNavigation({
                   ? 'border-white bg-black/30 text-white'
                   : 'border-black bg-white text-black'
               }`}
+              aria-hidden="true"
             >
               <span
                 className={`${textSizeClass} ${fontWeightClass} tracking-tighter -rotate-45 select-none whitespace-nowrap`}
@@ -156,7 +164,7 @@ export default function FooterNavigation({
             </div>
           </button>
         ) : (
-          <div className="w-12 sm:w-24" />
+          <div className="w-12 sm:w-24" aria-hidden="true" />
         )}
       </div>
     </div>

@@ -16,7 +16,7 @@ export default function LandingPage() {
       {/* 1. Shared Header Component */}
       <Header />
       {/* =================================================== */}
-      {/* MOBILE & TABLET LAYOUT (< 1024px)               */}
+      {/* MOBILE & TABLET LAYOUT (< 1024px)                  */}
       {/* =================================================== */}
       <div className="flex -translate-y-20 sm:translate-y-0 lg:hidden flex-col items-center justify-center my-auto px-4 z-10 w-full relative h-full">
         {/* Unified Static Rectangles with built-in responsive sizing */}
@@ -30,32 +30,36 @@ export default function LandingPage() {
             <span className="block text-[#1A1B1C]">skincare</span>
           </h1>
 
-          <p className="text-[12px] sm:text-[16px] tracking-tight font-semibold text-gray-400 leading-relaxed max-w-[260px] sm:max-w-none">
+          <p className="text-[12px] sm:text-[16px] tracking-tight font-semibold text-gray-700 leading-relaxed max-w-[260px] sm:max-w-none">
             Skinstric developed an A.I. that creates a highly-personalized
             routine tailored to what your skin needs.
           </p>
 
           {/* Enter Experience Button */}
-          <div
+          <button
             onClick={() => router.push('/testing')}
-            className="inline-flex items-center gap-3 sm:gap-3 -mt-2 sm:mt-0 cursor-pointer group sm:pt-0 pointer-events-auto hover:scale-105 duration-300 "
+            aria-label="Enter Skinstric AI Experience"
+            className="inline-flex items-center gap-3 sm:gap-3 -mt-2 sm:mt-0 cursor-pointer group sm:pt-0 pointer-events-auto hover:scale-105 duration-300 bg-transparent border-none p-0"
           >
             <span className="text-[9px] sm:text-[12px] uppercase tracking-tighter sm:tracking-tight font-bold sm:font-extrabold text-[#1A1B1C]">
               ENTER EXPERIENCE
             </span>
-            <div className="w-[20px] h-[20px] sm:w-[24px] sm:h-[24px] -translate-y-0.5 border border-solid border-black rotate-45 flex items-center justify-center">
+            <div
+              aria-hidden="true"
+              className="w-[20px] h-[20px] sm:w-[24px] sm:h-[24px] -translate-y-0.5 border border-solid border-black rotate-45 flex items-center justify-center"
+            >
               <img
                 src="/assets/arrow-right.png"
-                alt="Arrow Icon"
+                alt=""
                 className="w-[5px] h-[5px] sm:w-[6px] sm:h-[6px] sm:translate-x-0.5 sm:-translate-y-0.5 object-contain select-none"
                 style={{ transform: 'rotate(-45deg)' }}
               />
             </div>
-          </div>
+          </button>
         </div>
       </div>
       {/* =================================================== */}
-      {/* DESKTOP LAYOUT (>= 1024px)                      */}
+      {/* DESKTOP LAYOUT (>= 1024px)                          */}
       {/* =================================================== */}
       <div className="hidden lg:block absolute inset-0 pointer-events-none">
         {/* Center Heading Text Block (Shifts and changes alignment dynamically) */}
@@ -113,6 +117,7 @@ export default function LandingPage() {
             width="100%"
             height="100%"
             className="absolute inset-0 overflow-visible pointer-events-none"
+            aria-hidden="true"
           >
             <rect
               x="1"
@@ -120,7 +125,7 @@ export default function LandingPage() {
               width="718"
               height="718"
               fill="none"
-              stroke="#A0A4AB"
+              stroke="#595D63"
               strokeWidth="1"
               strokeDasharray="0.1 2"
               strokeLinecap="round"
@@ -138,10 +143,13 @@ export default function LandingPage() {
             }}
           >
             <div className="flex items-center gap-4 text-sm font-normal text-[#1A1B1C] group-hover:opacity-80 transition-opacity">
-              <div className="w-[30px] h-[30px] border border-solid border-black rotate-45 group-hover:scale-110 duration-300 flex items-center justify-center">
+              <div
+                aria-hidden="true"
+                className="w-[30px] h-[30px] border border-solid border-black rotate-45 group-hover:scale-110 duration-300 flex items-center justify-center"
+              >
                 <img
                   src="/assets/arrow-left.png"
-                  alt="Arrow Icon"
+                  alt=""
                   className="w-[10px] h-[10px] object-contain select-none rotate-180"
                   style={{ transform: 'rotate(-225deg)' }}
                 />
@@ -155,6 +163,9 @@ export default function LandingPage() {
 
         {/* --- RIGHT ROTATED CONTAINER BLOCK --- */}
         <div
+          role="button"
+          tabIndex={0}
+          aria-label="Take Test"
           className="absolute pointer-events-auto cursor-pointer group z-25 transition-opacity duration-500 ease-out"
           style={{
             width: '720px',
@@ -169,12 +180,19 @@ export default function LandingPage() {
           onMouseEnter={() => setHoveredSide('right')}
           onMouseLeave={() => setHoveredSide(null)}
           onClick={() => router.push('/testing')}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              router.push('/testing');
+            }
+          }}
         >
-          {/* 1. Diamond Border */}
+          {/* 1. Diamond Border (Darkened stroke for WCAG contrast compliance) */}
           <svg
             width="100%"
             height="100%"
             className="absolute inset-0 overflow-visible pointer-events-none"
+            aria-hidden="true"
           >
             <rect
               x="1"
@@ -182,7 +200,7 @@ export default function LandingPage() {
               width="718"
               height="718"
               fill="none"
-              stroke="#A0A4AB"
+              stroke="#595D63"
               strokeWidth="1"
               strokeDasharray="0.1 2"
               strokeLinecap="round"
@@ -200,10 +218,13 @@ export default function LandingPage() {
             }}
           >
             <div className="flex items-center gap-4 text-sm font-normal text-[#1A1B1C] group-hover:opacity-80 transition-opacity flex-row-reverse">
-              <div className="w-[30px] h-[30px] border border-solid border-black rotate-45 group-hover:scale-110 duration-300 flex items-center justify-center">
+              <div
+                aria-hidden="true"
+                className="w-[30px] h-[30px] border border-solid border-black rotate-45 group-hover:scale-110 duration-300 flex items-center justify-center"
+              >
                 <img
                   src="/assets/arrow-right.png"
-                  alt="Arrow Icon"
+                  alt=""
                   className="w-[10px] h-[10px] object-contain select-none"
                   style={{ transform: 'rotate(-45deg)' }}
                 />

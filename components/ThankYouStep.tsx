@@ -3,11 +3,14 @@
 // Function: ThankYouStep
 export default function ThankYouStep() {
   return (
-    <div className="w-full flex flex-col items-center justify-center text-center space-y-1">
-      <h2 className="text-2xl font-normal text-gray-900 tracking-tight">
+    <div
+      className="w-full flex flex-col items-center justify-center text-center space-y-1"
+      aria-live="polite"
+    >
+      <h2 className="text-2xl font-normal text-gray-900 tracking-tight focus:outline-none">
         Thank you!
       </h2>
-      <p className="text-[18px] text-gray-600 font-light">
+      <p className="text-[18px] text-gray-700 font-light">
         Proceed for the next step
       </p>
     </div>

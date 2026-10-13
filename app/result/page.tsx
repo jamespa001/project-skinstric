@@ -117,25 +117,26 @@ export default function ResultPage() {
         onChange={handleFileChange}
         accept="image/*"
         className="hidden"
+        aria-label="Upload skin image file"
       />
 
-      {/* Sub-header snippet: Always shows "TO START ANALYSIS" to match production behavior */}
+      {/* Sub-header snippet with high-contrast text */}
       <div className="absolute top-[85px] left-8 md:left-8 text-left z-20">
-        <p className="text-xs font-bold uppercase tracking-tight">
+        <p className="text-xs font-bold uppercase tracking-tight text-gray-700">
           TO START ANALYSIS
         </p>
       </div>
 
       {/* Preview Thumbnail */}
       <div className="absolute top-[110px] right-[30px] z-20 flex flex-col items-start">
-        <h1 className="text-xs md:text-sm font-normal mb-1 text-[#1A1B1C]">
+        <h1 className="text-xs md:text-sm font-normal mb-1 text-gray-700">
           Preview
         </h1>
         <div className="w-24 h-24 md:w-32 md:h-32 border border-gray-300 overflow-hidden bg-white">
           {selectedImage && (
             <img
               src={selectedImage}
-              alt="Uploaded Preview"
+              alt="Uploaded skin preview thumbnail"
               className="w-full h-full object-cover"
             />
           )}
@@ -154,7 +155,12 @@ export default function ResultPage() {
             />
             {/* Custom Permission Modal Box - Positioned over the camera card area */}
             {showPermissionModal && (
-              <div className="absolute z-50 pointer-events-auto -translate-y-52 md:translate-y-0">
+              <div
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="camera-modal-title"
+                className="absolute z-50 pointer-events-auto -translate-y-52 md:translate-y-0"
+              >
                 <div
                   style={{
                     width: '352px',
@@ -165,18 +171,24 @@ export default function ResultPage() {
                   className="flex flex-col justify-between p-6 shadow-2xl"
                 >
                   {/* Top Title Section */}
-                  <div className="w-full text-[16px] leading-[24px] font-semibold uppercase tracking-normal">
+                  <div
+                    id="camera-modal-title"
+                    className="w-full text-[16px] leading-[24px] font-semibold uppercase tracking-normal"
+                  >
                     Allow A.I. to access your camera
                   </div>
 
                   {/* Horizontal Divider Line */}
-                  <div className="w-full h-[1px] bg-[#FCFCFC]/70 my-2" />
+                  <div
+                    className="w-full h-[1px] bg-[#FCFCFC]/70 my-2"
+                    aria-hidden="true"
+                  />
 
                   {/* Bottom Button Row */}
                   <div className="flex justify-end space-x-6 text-xs font-semibold tracking-wider">
                     <button
                       onClick={() => setShowPermissionModal(false)}
-                      style={{ opacity: 0.7 }}
+                      style={{ opacity: 0.9 }}
                       className="hover:opacity-100 transition-opacity uppercase text-[#FCFCFC]"
                     >
                       Deny
@@ -194,19 +206,26 @@ export default function ResultPage() {
           </div>
         ) : (
           /* Center Preparing Analysis Loading Card */
-          <div className="relative w-80 h-80 flex flex-col items-center justify-center p-8 pointer-events-auto">
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div
+            role="status"
+            aria-live="polite"
+            className="relative w-80 h-80 flex flex-col items-center justify-center p-8 pointer-events-auto"
+          >
+            <div
+              className="absolute inset-0 flex items-center justify-center pointer-events-none"
+              aria-hidden="true"
+            >
               <RotatingRectangles variant="small" sizeTier="compact" />
             </div>
 
             <div className="relative z-10 flex flex-col items-center space-y-3 text-center">
-              <p className="text-normal font-bold uppercase tracking-tight text-[#1A1B1C]">
+              <p className="text-normal font-bold uppercase tracking-tight text-gray-800">
                 PREPARING YOUR ANALYSIS...
               </p>
-              <div className="flex space-x-4 pt-1">
-                <div className="w-2 h-2 bg-[#1A1B1C]/40 rounded-full animate-bounce" />
-                <div className="w-2 h-2 bg-[#1A1B1C]/40 rounded-full animate-bounce [animation-delay:0.2s]" />
-                <div className="w-2 h-2 bg-[#1A1B1C]/40 rounded-full animate-bounce [animation-delay:0.4s]" />
+              <div className="flex space-x-4 pt-1" aria-hidden="true">
+                <div className="w-2 h-2 bg-gray-700 rounded-full animate-bounce" />
+                <div className="w-2 h-2 bg-gray-700 rounded-full animate-bounce [animation-delay:0.2s]" />
+                <div className="w-2 h-2 bg-gray-700 rounded-full animate-bounce [animation-delay:0.4s]" />
               </div>
             </div>
           </div>

@@ -143,9 +143,13 @@ export default function CameraCapturePage() {
 
       {/* Center Viewport / Stream / Preview Area */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-        {/* Top Status Text: Shows only when captured */}
+        {/* Top Status Text: Announced automatically when captured */}
         {captureState === 'captured' && (
-          <div className="absolute top-[250px] left-1/2 -translate-x-1/2 text-center z-25 pointer-events-none">
+          <div
+            role="status"
+            aria-live="polite"
+            className="absolute top-[250px] left-1/2 -translate-x-1/2 text-center z-25 pointer-events-none"
+          >
             <p className="font-normal text-sm tracking-tight text-white">
               GREAT SHOT!
             </p>
@@ -167,12 +171,13 @@ export default function CameraCapturePage() {
               ref={videoRef}
               playsInline
               muted
+              aria-label="Live webcam feed for skin capture"
               className="w-full h-full object-cover transform scale-x-[-1]"
             />
           ) : (
             <img
               src={capturedImage!}
-              alt="Captured Preview"
+              alt="Captured skin preview"
               className="w-full h-full object-cover transform scale-x-[-1]"
             />
           )}
@@ -180,8 +185,12 @@ export default function CameraCapturePage() {
 
         {/* Analyzing Modal Overlay Card */}
         {captureState === 'analyzing' && (
-          <div className="absolute z-50 w-64 bg-gray-100/50 border border-[#1A1B1C]/10 pt-6 pb-14 shadow-xl flex flex-col items-center space-y-6 pointer-events-auto rounded-[8px] -translate-y-4 md:-translate-y-4">
-            <p className="text-lg font-normal uppercase tracking-tight text-[#707070]">
+          <div
+            role="status"
+            aria-live="polite"
+            className="absolute z-50 w-64 bg-gray-100/50 border border-[#1A1B1C]/10 pt-6 pb-14 shadow-xl flex flex-col items-center space-y-6 pointer-events-auto rounded-[8px] -translate-y-4 md:-translate-y-4"
+          >
+            <p className="text-lg font-normal uppercase tracking-tight text-gray-700">
               ANALYZING IMAGE...
             </p>
             <LoadingDots pt="pt-1" spacing="space-x-4" dotSize="w-2 h-2" />
@@ -212,12 +221,16 @@ export default function CameraCapturePage() {
           <button
             onClick={handleCapture}
             className="w-16 h-16 rounded-full bg-white border border-[#1A1B1C]/20 shadow-lg flex items-center justify-center hover:scale-105 transition-transform relative"
-            aria-label="Take Picture"
+            aria-label="Take picture"
           >
             {/* Inner Ring */}
-            <div className="absolute w-[60px] h-[60px] rounded-full border-2 border-[#1A1B1C]/50 flex items-center justify-center">
+            <div
+              className="absolute w-[60px] h-[60px] rounded-full border-2 border-[#1A1B1C]/50 flex items-center justify-center"
+              aria-hidden="true"
+            >
               <svg
-                className="w-6 h-6 text-gray-400"
+                aria-hidden="true"
+                className="w-6 h-6 text-gray-700"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -256,12 +269,14 @@ export default function CameraCapturePage() {
         <div className="absolute bottom-42 sm:bottom-24 left-1/2 -translate-x-1/2 z-40 flex items-center space-x-6 pointer-events-auto">
           <button
             disabled
+            aria-disabled="true"
             className="px-6 py-2 bg-white text-[#1A1B1C]/50 border border-[#1A1B1C]/20 text-sm font-normal tracking-tight cursor-not-allowed"
           >
             Retake
           </button>
           <button
             disabled
+            aria-disabled="true"
             className="px-6 py-2 bg-[#1A1B1C] text-white text-sm font-normal tracking-tight opacity-90 cursor-wait flex items-center space-x-2"
           >
             <span>Uploading...</span>
@@ -285,7 +300,10 @@ export default function CameraCapturePage() {
       </div>
 
       {/* White background block stretching full width below footer */}
-      <div className="absolute bottom-0 left-0 w-full h-[52px] bg-white z-20 pointer-events-none" />
+      <div
+        className="absolute bottom-0 left-0 w-full h-[52px] bg-white z-20 pointer-events-none"
+        aria-hidden="true"
+      />
     </main>
   );
 }

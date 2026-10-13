@@ -28,22 +28,29 @@ export default function CameraSetupPage() {
       {/* Center View */}
       <div className="absolute inset-0 flex items-center justify-center -translate-y-[160px] md:-translate-y-[100px] z-10">
         {/* Rotating Animation Graphics & Center Camera Icon Container */}
-        <div className="relative flex items-center justify-center">
+        <div
+          className="relative flex items-center justify-center"
+          aria-hidden="true"
+        >
           <RotatingRectangles variant="small" sizeTier="compact" />
           <div className="absolute z-25 flex flex-col items-center space-y-4">
             <div className="w-[95px] h-[95px] md:w-[136px] md:h-[136px] flex items-center justify-center">
               <img
                 src="/assets/camera-icon.png"
-                alt="Camera Setup"
+                alt=""
                 className="w-full h-full object-contain opacity-40"
               />
             </div>
           </div>
         </div>
 
-        {/* Setup Status Text - Offset downward relative to the center cluster */}
-        <div className="absolute z-25 flex flex-col items-center translate-y-[80px] md:translate-y-[85px] space-y-4">
-          <p className="text-[12px] md:text-xs font-bold uppercase tracking-tight text-gray-400 whitespace-nowrap">
+        {/* Setup Status Text */}
+        <div
+          role="status"
+          aria-live="polite"
+          className="absolute z-25 flex flex-col items-center translate-y-[80px] md:translate-y-[85px] space-y-4"
+        >
+          <p className="text-[12px] md:text-xs font-bold uppercase tracking-tight text-gray-700 whitespace-nowrap">
             SETTING UP CAMERA ...
           </p>
         </div>
@@ -69,20 +76,25 @@ export default function CameraSetupPage() {
           {/* Back Navigation Button */}
           <button
             onClick={() => router.push('/result')}
-            className="text-gray-400 hover:text-black transition-colors text-xs"
+            aria-label="Previous step"
+            className="text-gray-700 hover:text-black transition-colors text-xs"
           >
-            ◀
+            <span aria-hidden="true">◀</span>
           </button>
 
           {/* Progress Track Bar */}
-          <div className="flex-1 h-[10px] bg-gray-400 rounded-full"></div>
+          <div
+            className="flex-1 h-[10px] bg-gray-700 rounded-full"
+            aria-hidden="true"
+          ></div>
 
           {/* Forward Navigation Button */}
           <button
             onClick={() => router.push('/camera/capture')}
-            className="text-gray-400 hover:text-black transition-colors text-xs"
+            aria-label="Next step"
+            className="text-gray-700 hover:text-black transition-colors text-xs"
           >
-            ▶
+            <span aria-hidden="true">▶</span>
           </button>
         </div>
       </div>

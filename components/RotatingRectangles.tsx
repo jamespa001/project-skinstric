@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useRef } from 'react';
 
 interface RotatingRectanglesProps {
@@ -91,6 +93,7 @@ export default function RotatingRectangles({
 
   return (
     <div
+      aria-hidden="true"
       className={`absolute inset-0 flex items-center justify-center pointer-events-none z-10 ${className}`}
     >
       {/* Outer Rectangle */}

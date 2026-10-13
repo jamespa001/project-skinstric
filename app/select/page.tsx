@@ -19,35 +19,35 @@ export default function SelectAnalysisPage() {
       case 'demographics':
         return {
           scale: 425 / BASE_SIZE,
-          stroke: '#B0B4BA',
+          stroke: '#71757B',
           strokeWidth: '2.5',
           dashArray: '0.1 8',
         };
       case 'cosmetic':
         return {
           scale: 480 / BASE_SIZE,
-          stroke: '#D1D5DB',
+          stroke: '#71757B',
           strokeWidth: '2.5',
           dashArray: '0.1 8',
         };
       case 'weather':
         return {
           scale: 538 / BASE_SIZE,
-          stroke: '#C0C4CB',
+          stroke: '#71757B',
           strokeWidth: '3.0',
           dashArray: '0.1 8',
         };
       case 'skin':
         return {
           scale: 480 / BASE_SIZE,
-          stroke: '#D1D5DB',
+          stroke: '#71757B',
           strokeWidth: '2.5',
           dashArray: '0.1 8',
         };
       default:
         return {
           scale: 400 / BASE_SIZE,
-          stroke: '#9CA3AF',
+          stroke: '#595D63',
           strokeWidth: '1.5',
           dashArray: '0.1 8',
         };
@@ -66,7 +66,7 @@ export default function SelectAnalysisPage() {
         <h1 className="text-base font-semibold leading-[24px] tracking-tight">
           A.I. ANALYSIS
         </h1>
-        <p className="text-sm mt-1 text-[#1A1B1C]/70 uppercase leading-[24px]">
+        <p className="text-sm mt-1 text-gray-700 uppercase leading-[24px]">
           A.I. has estimated the following.
           <br />
           Fix estimated information if needed.
@@ -92,6 +92,7 @@ export default function SelectAnalysisPage() {
               width="100%"
               height="100%"
               className="overflow-visible pointer-events-none"
+              aria-hidden="true"
             >
               <rect
                 x="1"
@@ -117,6 +118,7 @@ export default function SelectAnalysisPage() {
             >
               <button
                 onClick={() => router.push('/summary')}
+                aria-label="Demographics analysis"
                 className="w-[153.88px] h-[153.88px] bg-gray-200 hover:bg-gray-300 transform rotate-45 flex items-center justify-center -m-5 cursor-pointer font-semibold leading-[24px] tracking-[-0.02em] uppercase transition-colors duration-300 shadow-sm"
               >
                 <span className="transform -rotate-45 text-[16px] font-semibold tracking-[-0.02em]">
@@ -133,7 +135,9 @@ export default function SelectAnalysisPage() {
             >
               <button
                 disabled
-                className="w-[153.88px] h-[153.88px] bg-gray-100 hover:bg-gray-300 transform rotate-45 flex items-center justify-center -m-5 font-semibold leading-[24px] tracking-[-0.02em] uppercase cursor-not-allowed transition-colors duration-300 shadow-sm"
+                aria-disabled="true"
+                aria-label="Cosmetic concerns, upcoming section"
+                className="w-[153.88px] h-[153.88px] bg-gray-100 transform rotate-45 flex items-center justify-center -m-5 font-semibold leading-[24px] tracking-[-0.02em] uppercase cursor-not-allowed transition-colors duration-300 shadow-sm"
               >
                 <span className="transform -rotate-45 text-[16px] font-semibold tracking-[-0.02em] text-center px-4 leading-[20px]">
                   Cosmetic
@@ -151,7 +155,9 @@ export default function SelectAnalysisPage() {
             >
               <button
                 disabled
-                className="w-[153.88px] h-[153.88px] bg-gray-100 hover:bg-gray-300 transform rotate-45 flex items-center justify-center -m-5 font-semibold leading-[24px] tracking-[-0.02em] uppercase cursor-not-allowed transition-colors duration-300 shadow-sm"
+                aria-disabled="true"
+                aria-label="Skin type details, upcoming section"
+                className="w-[153.88px] h-[153.88px] bg-gray-100 transform rotate-45 flex items-center justify-center -m-5 font-semibold leading-[24px] tracking-[-0.02em] uppercase cursor-not-allowed transition-colors duration-300 shadow-sm"
               >
                 <span className="transform -rotate-45 text-[16px] font-semibold tracking-[-0.02em] text-center px-3 whitespace-nowrap">
                   Skin Type Details
@@ -167,7 +173,9 @@ export default function SelectAnalysisPage() {
             >
               <button
                 disabled
-                className="w-[153.88px] h-[153.88px] bg-gray-100 hover:bg-gray-300 transform rotate-45 flex items-center justify-center -m-5 font-semibold leading-[24px] tracking-[-0.02em] uppercase cursor-not-allowed transition-colors duration-300 shadow-sm"
+                aria-disabled="true"
+                aria-label="Weather analysis, upcoming section"
+                className="w-[153.88px] h-[153.88px] bg-gray-100 transform rotate-45 flex items-center justify-center -m-5 font-semibold leading-[24px] tracking-[-0.02em] uppercase cursor-not-allowed transition-colors duration-300 shadow-sm"
               >
                 <span className="transform -rotate-45 text-[16px] font-semibold tracking-[-0.02em]">
                   Weather

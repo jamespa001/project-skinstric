@@ -71,7 +71,7 @@ export default function SummaryPage() {
 
   if (!analysisData) {
     return (
-      <div className="p-12 text-center text-xs tracking-wider">
+      <div className="p-12 text-center text-xs tracking-wider text-gray-700">
         Loading analysis data...
       </div>
     );
@@ -125,14 +125,18 @@ export default function SummaryPage() {
             <h3 className="text-4xl md:text-[72px] font-normal leading-[64px] tracking-tighter">
               DEMOGRAPHICS
             </h3>
-            <h4 className="text-sm mt-2 leading-[24px]">
+            <h4 className="text-sm mt-2 leading-[24px] text-gray-700">
               PREDICTED RACE &amp; AGE
             </h4>
           </div>
 
           <div className="grid mt-6 md:grid-cols-[1.5fr_8.5fr_3.15fr] gap-4 md:gap-4 md:mt-8">
-            {/* Left Navigation Buttons */}
-            <div className="bg-white space-y-3 md:flex md:flex-col h-[62%]">
+            {/* Left Navigation Tabs */}
+            <div
+              role="tablist"
+              aria-label="Demographic categories"
+              className="bg-white space-y-3 md:flex md:flex-col h-[62%]"
+            >
               {categoryLabels.map((cat) => {
                 const isActive = activeCategory === cat.key;
                 const displayLabel = (() => {
@@ -158,6 +162,12 @@ export default function SummaryPage() {
                     tabIndex={0}
                     aria-selected={isActive}
                     onClick={() => setActiveCategory(cat.key)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        setActiveCategory(cat.key);
+                      }
+                    }}
                     className={`p-3 cursor-pointer flex-1 flex flex-col justify-between border-t transition-colors ${
                       isActive
                         ? 'bg-[#1A1B1C] text-white hover:bg-black'
@@ -197,6 +207,7 @@ export default function SummaryPage() {
                     className="CircularProgressbar text-[#1A1B1C]"
                     viewBox="0 0 100 100"
                     data-test-id="CircularProgressbar"
+                    aria-hidden="true"
                   >
                     <path
                       className="CircularProgressbar-trail"
@@ -205,7 +216,7 @@ export default function SummaryPage() {
                       m 0,-49.15
                       a 49.15,49.15 0 1 1 0,98.3
                       a 49.15,49.15 0 1 1 0,-98.3
-                    "
+                      "
                       strokeWidth="1.7"
                       fillOpacity="0"
                       style={{
@@ -222,7 +233,7 @@ export default function SummaryPage() {
                       m 0,-49.15
                       a 49.15,49.15 0 1 1 0,98.3
                       a 49.15,49.15 0 1 1 0,-98.3
-                    "
+                      "
                       strokeWidth="1.7"
                       fillOpacity="0"
                       style={{
@@ -236,23 +247,41 @@ export default function SummaryPage() {
                     />
                   </svg>
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <p className="text-3xl md:text-[40px] font-normal">
+                    <p
+                      className="text-3xl md:text-[40px] font-normal"
+                      aria-label={`A.I. confidence score ${currentSelectionScore} percent`}
+                    >
                       {currentSelectionScore}
-                      <span className="absolute text-xl md:text-3xl">%</span>
+                      <span
+                        className="absolute text-xl md:text-3xl"
+                        aria-hidden="true"
+                      >
+                        %
+                      </span>
                     </p>
                   </div>
                 </div>
               </div>
-              <p className="md:absolute text-xs text-[#A0A4AB] md:text-sm lg:text-base font-normal mb-1 leading-[24px] md:bottom-[-15%] md:left-[22%] lg:left-[30%] xl:left-[40%] 2xl:left-[45%]">
+              <p
+                className="md:absolute text-xs text-gray-700 md:text-sm lg:text-base font-normal mb-1 leading-[24px] md:bottom-[-15%] md:left-[22%] lg:left-[30%] xl:left-[40%] 2xl:left-[45%]"
+                aria-hidden="true"
+              >
                 If A.I. estimate is wrong, select the correct one.
               </p>
             </div>
 
             {/* Right Breakdown Table */}
             <div className="bg-gray-100 pt-4 pb-4 md:border-t overflow-y-auto max-h-[57vh]">
-              <div className="space-y-0">
+              <div
+                role="radiogroup"
+                aria-labelledby="breakdown-heading"
+                className="space-y-0"
+              >
                 <div className="flex justify-between px-4">
-                  <h4 className="text-base leading-[24px] tracking-tight font-semibold mb-2 uppercase">
+                  <h4
+                    id="breakdown-heading"
+                    className="text-base leading-[24px] tracking-tight font-semibold mb-2 uppercase"
+                  >
                     {activeCategory}
                   </h4>
                   <h4 className="text-base leading-[24px] tracking-tight font-semibold mb-2">
@@ -306,7 +335,8 @@ export default function SummaryPage() {
                     >
                       <div className="flex items-center gap-1">
                         <Image
-                          alt="radio button"
+                          alt=""
+                          aria-hidden="true"
                           loading="lazy"
                           width={12}
                           height={12}
