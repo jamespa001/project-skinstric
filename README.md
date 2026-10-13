@@ -62,5 +62,5 @@ This application was audited and refactored to meet strict WCAG 2.1 AA accessibi
 
 | Before Accessibility Refactor                                            | After WCAG 2.1 AA Compliance                                     |
 | :----------------------------------------------------------------------- | :--------------------------------------------------------------- |
-| ![axe DevTools Before](/screenshots/axeDev.before.png)                   | ![axe DevTools After](/screenshots/axeDev.after.png)             |
+| ![axe DevTools Before](./public/screenshots/axeDev.before.png)           | ![axe DevTools After](./public/screenshots/axeDev.after.png)     |
 | _Identified contrast gaps, unlabelled elements, and missing ARIA roles._ | _Zero errors or warnings — fully verified and production-ready._ |
