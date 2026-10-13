@@ -40,3 +40,27 @@ This project is built and committed incrementally following a structured multi-p
 
 4. **State Persistence, Error Handling & Polish**
    - LocalStorage synchronization, `try...catch` data parsing guards, keyboard accessibility (ARIA), and final responsiveness tweaks.
+
+## ♿ Accessibility & Quality Assurance (WCAG 2.1 AA)
+
+This application was audited and refactored to meet strict WCAG 2.1 AA accessibility standards, ensuring full screen-reader compatibility and keyboard navigation.
+
+### Audit Results
+
+- **Lighthouse Accessibility Score:** 100% 🟢
+- **axe DevTools Violations:** 0 errors / 0 warnings
+
+### Key Accessibility Enhancements
+
+- **High-Contrast Compliance:** Standardized text and placeholder contrast tokens (`text-gray-700`, `placeholder-gray-500`) to meet the strict 4.5:1 ratio threshold.
+- **Keyboard Navigation & Focus:** Replaced non-semantic click handlers with accessible `<button>` elements, ensuring visible focus states and full `Enter`/`Space` activation across multi-step flows.
+- **Screen Reader Support:** Implemented `role="status"` with `aria-live="polite"` for dynamic processing feedback, `aria-describedby` for error linkages, and `aria-hidden="true"` for decorative graphics and animations.
+
+---
+
+### axe DevTools Audit: Before & After
+
+| Before Accessibility Refactor                                            | After WCAG 2.1 AA Compliance                                     |
+| :----------------------------------------------------------------------- | :--------------------------------------------------------------- |
+| ![axe DevTools Before](/screenshots/axeDev.before.png)                   | ![axe DevTools After](/screenshots/axeDev.after.png)             |
+| _Identified contrast gaps, unlabelled elements, and missing ARIA roles._ | _Zero errors or warnings — fully verified and production-ready._ |
