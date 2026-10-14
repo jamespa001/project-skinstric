@@ -1,3 +1,5 @@
+![Skinstric CI](https://github.com/jamespa001/project-skinstric/actions/workflows/ci.yml/badge.svg)
+
 # Skinstric Frontend Clone
 
 A high-fidelity frontend clone of the Skinstric AI-powered skin analysis and diagnostics platform, built with modern web technologies.
